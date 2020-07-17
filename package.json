@@ -1,16 +1,22 @@
 {
-  "name": "vanilla",
+  "name": "hearts_of_html",
   "version": "1.0.0",
-  "description": "JavaScript example starter project",
-  "main": "index.html",
+  "description": "HOI 4 for your browser. Early development.",
+  "main": "index.js",
   "scripts": {
-    "start": "parcel index.html --open",
-    "build": "parcel build index.html"
+    "start": "node index.js"
   },
-  "dependencies": {},
-  "devDependencies": {
-    "@babel/core": "7.2.0",
-    "parcel-bundler": "^1.6.1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gerardparareda/Hearts_of_HTML.git"
   },
-  "keywords": ["javascript", "starter"]
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gerardparareda/Hearts_of_HTML/issues"
+  },
+  "homepage": "https://github.com/gerardparareda/Hearts_of_HTML#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
