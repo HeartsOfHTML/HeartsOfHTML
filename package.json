@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gerardparareda/Hearts_of_HTML.git"
+    "url": "git+https://github.com/HeartsOfHTML/Hearts_of_HTML.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gerardparareda/Hearts_of_HTML/issues"
+    "url": "https://github.com/HeartsOfHTML/Hearts_of_HTML/issues"
   },
-  "homepage": "https://github.com/gerardparareda/Hearts_of_HTML#readme",
+  "homepage": "https://github.com/HeartsOfHTML/Hearts_of_HTML#readme",
   "dependencies": {
     "express": "^4.17.1"
   }
