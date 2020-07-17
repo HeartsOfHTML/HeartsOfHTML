@@ -7,3 +7,5 @@ app.use(express.static("public"))
 app.get("/", function (req, res) {
     res.redirect("/index.html")
 })
+
+app.listen(PORT, () => console.log(`App listening at port ${PORT}`))
