@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket.IO Test - Hearts of HTML</title>
+</head>
+
+<body>
+    <h1>Socket.IO test</h1>
+    <button onclick="host();">Host</button>
+    <button onclick="join();">Join</button>
+
+    <br><br>
+    <div id="dialog1"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        function host() {
+            $("#dialog1").load("/host.html")
+        }
+
+        function join() {
+            $("#dialog1").load("/join.html")
+        }
+
+        function closeDialog1() {
+            $("#dialog1").empty()
+        }
+
+        var socket = io()
+
+        socket.on("server sent id", (socketId) => {
+            console.log("Socket ID: " + socketId)
+            sessionStorage.setItem("socketId", socketId)
+        })
+
+        // host functions
+
+        function createRoom(roomName) {
+            $.post("socketiotest",
+                {
+                    // data to send in post request
+                    socketId: sessionStorage.getItem("socketId"),
+                    type: "createRoom",
+                    roomName: roomName
+                },
+                function (data, status) {
+                    console.log(status)
+                    console.log(data)
+                    console.log("done")
+
+                    if (data == "room created") {
+                        roomCreatedSuccessfully()
+                    }
+                })
+        }
+
+        function roomCreatedSuccessfully() {
+            alert("Room created successfully.")
+        }
+
+        // join functions
+
+        function joinRoom(roomName) {
+            $.post("socketiotest",
+                {
+                    // data to send in post request
+                    socketId: sessionStorage.getItem("socketId"),
+                    type: "joinRoom",
+                    roomName: roomName
+                },
+                function (data, status) {
+
+                })
+        }
+    </script>
+</body>
+
+</html>
