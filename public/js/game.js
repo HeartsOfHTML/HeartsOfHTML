@@ -55,8 +55,7 @@ function animate() {
     requestAnimationFrame( animate );
     
     if(doneLoading){
-        //sphere.animate();
-
+        $('body').fadeIn();
     }
 
     orbitControls.update();
@@ -67,8 +66,8 @@ animate();
 var myGame = {
     startRenderer : function(){
         
-        renderer.setSize( window.innerWidth, window.innerHeight );
-        document.body.appendChild( renderer.domElement );
+        renderer.setSize( window.innerWidth / 2, window.innerHeight / 2 );
+        document.body.prepend( renderer.domElement );
     },
 
     addSphere : function (){
