@@ -1,23 +1,43 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-    <meta content="utf-8" http-equiv="encoding">
-    <title></title>
-    <link rel="stylesheet" type="text/css" href="game.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Roboto:wght@300;500&display=swap"
-      rel="stylesheet"
-    />
+<html style="height: 100%; width: 100%;">
 
-    <style>
-			body { margin: 0; }
-			canvas { display: block; }
-		</style>
-  </head>
-  <body class="body">
-    
-  </body>
-  <script src="js/three.js"></script>
-  <script src="js/game.js"></script>
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="game.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Roboto:wght@300;500&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+    }
+
+    canvas {
+      padding: 0;
+      margin: auto;
+      display: block;
+    }
+  </style>
+</head>
+
+<body class="body" style="display: none; min-height: 100%; min-width: 100%;">
+  <div id="main container" style="text-align: center;">
+    <br>
+    <button onclick="startButtonPressed();">START</button>
+  </div>
+
+  <audio control src="sounds/click_menu.wav" id="menu-click-open"></audio>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="js/three.js"></script>
+<script src="js/game.js"></script>
+<script>
+  function startButtonPressed() {
+    document.getElementById('menu-click-open').play()
+    setTimeout(function () { window.location.href = "newgame"; }, 750);
+  }
+</script>
+
 </html>
