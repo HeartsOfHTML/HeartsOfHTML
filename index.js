@@ -51,6 +51,10 @@ app.get("/newgame", (req, res) => {
     res.sendFile(__dirname + "/public/newgame.html")
 })
 
+app.get("/maingame", (req, res) => {
+    res.sendFile(__dirname + "/public/maingame.html")
+})
+
 io.on("connection", (socket) => {
     console.log("A user connected! ID: " + socket.id)
 

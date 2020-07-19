@@ -1,0 +1,15 @@
+.main-button {
+    border-style: none;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-color: #b88a00;
+    width: 60vw;
+    margin-top: 2em;
+    padding: 2em 0;
+    background: none;
+    color: black;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    transition: all 0.25s;
+    cursor: pointer;
+  }
