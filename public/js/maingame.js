@@ -3,7 +3,11 @@ var country = localStorage.getItem("country")
 
 window.document.title = `${gameName} - Hearts of HTML`
 
+const mainCanvasPercentage = 85
+const uiCanvasPercentage = 15
+
 var stage
+var uiStage
 var scrollLevel = 1
 var worldMapBitmap
 const scrollSpeed = 1.25
@@ -11,7 +15,7 @@ const scrollSpeed = 1.25
 function init() {
     var canvas = document.getElementById("main-canvas")
     canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
+    canvas.height = window.innerHeight * (mainCanvasPercentage / 100)
 
     canvas.addEventListener('wheel', scrollWheelMoved.bind(this));
 
@@ -52,10 +56,16 @@ function handleWorldMapImageLoad(event) {
     stage.addChild(worldMapBitmap)
     stage.update()
 
-    stageFullyLoaded()
+    document.getElementById("ui-canvas").width = window.innerWidth
+    document.getElementById("ui-canvas").height = window.innerHeight * (uiCanvasPercentage / 100)
+    uiStage = new createjs.Stage(document.getElementById("ui-canvas"))
+
+    drawUiStage()
+
+    stagesFullyLoaded()
 }
 
-function stageFullyLoaded() {
+function stagesFullyLoaded() {
     document.getElementById("loading-div").remove()
 }
 
@@ -91,4 +101,15 @@ function scrollWheelMoved(action) {
     }
 
     updateMap()
+}
+
+function drawUiStage() {
+    var button1 = new createjs.Shape()
+
+    var button1Height = document.getElementById("ui-canvas").height
+    button1.graphics.beginFill("#000000").drawRect(0, 0, button1Height * 2, button1Height)
+
+    uiStage.addChild(button1)
+
+    uiStage.update()
 }
