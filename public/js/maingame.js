@@ -22,13 +22,13 @@ function init() {
     worldMapImage.onload = handleWorldMapImageLoad
 
     stage.addEventListener("stagemousedown", function(e) {
-        var offset={x:stage.x-e.stageX,y:stage.y-e.stageY};
-        stage.addEventListener("stagemousemove",function(ev) {
-            stage.x = ev.stageX+offset.x;
-            stage.y = ev.stageY+offset.y;
+        var offset = { x: stage.x - e.stageX, y: stage.y - e.stageY };
+        stage.addEventListener("stagemousemove", function(ev) {
+            stage.x = ev.stageX + offset.x;
+            stage.y = ev.stageY + offset.y;
             stage.update();
         });
-        stage.addEventListener("stagemouseup", function(){
+        stage.addEventListener("stagemouseup", function() {
             stage.removeAllEventListeners("stagemousemove");
         });
     });
@@ -38,7 +38,8 @@ function handleWorldMapImageLoad(event) {
     var imageToShow = event.target
     worldMapBitmap = new createjs.Bitmap(imageToShow)
 
-    var w = stage.canvas.width, h = stage.canvas.height
+    var w = stage.canvas.width,
+        h = stage.canvas.height
 
     var xratio = w / imageToShow.width,
         yratio = h / imageToShow.height,
@@ -50,6 +51,12 @@ function handleWorldMapImageLoad(event) {
 
     stage.addChild(worldMapBitmap)
     stage.update()
+
+    stageFullyLoaded()
+}
+
+function stageFullyLoaded() {
+    document.getElementById("loading-div").remove()
 }
 
 function updateMap() {
