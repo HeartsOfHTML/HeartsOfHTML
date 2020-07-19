@@ -2,71 +2,75 @@
 <html>
 
 <head>
-  <title></title>
-  <link rel="stylesheet" type="text/css" href="main.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Roboto:wght@300;500&display=swap"
-    rel="stylesheet" />
-  <script type="text/javavascript" src="js/main-menu.js"></script>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Roboto:wght@300;500&display=swap" rel="stylesheet" />
+    <script type="text/javavascript" src="js/main-menu.js"></script>
+    <title>Hearts of HTML</title>
 </head>
 
 <body>
-  <div id="menu-background">
-    <div id="main-menu">
-      <br />
-      <div id="under-development">
-        <h1 class="h1">This is still under very early development!!!</h1>
-        <button class="main-button"
-          onclick="document.getElementById('under-development').style.display = 'none';document.getElementById('menu-contents').style.display = 'inline-block';document.getElementById('menu-music').play();document.getElementById('menu-click-open').play();">
+    <div id="menu-background">
+        <div id="main-menu">
+            <br />
+            <div id="under-development">
+                <h1 class="h1">This is still under very early development!!!</h1>
+                <button class="main-button" onclick="document.getElementById('under-development').style.display = 'none';document.getElementById('menu-contents').style.display = 'inline-block';document.getElementById('menu-music').play();document.getElementById('menu-click-open').play();">
           Ok
         </button>
-      </div>
-      <div id="menu-contents">
-        <h1 class="h1">Hearts of HTML</h1>
-        <button class="main-button" onclick="newGame()">
+            </div>
+            <div id="menu-contents">
+                <h1 class="h1">Hearts of HTML</h1>
+                <button class="main-button" onclick="newGame()">
           New Game
         </button>
-        <button class="main-button" onclick="newGame()">
+                <button class="main-button" onclick="newGame()">
           Load Game (redirects to new game)
         </button>
-        <script>
-          function newGame() {
-            document.getElementById('menu-click-open').play();
-            setTimeout(function () { window.location.href = "newgame"; }, 750);
-          }
-        </script>
-        <button class="main-button" onclick="devPage()">
+                <script>
+                    function newGame() {
+                        document.getElementById('menu-click-open').play();
+                        setTimeout(function() {
+                            window.location.href = "newgame";
+                        }, 750);
+                    }
+                </script>
+                <button class="main-button" onclick="devPage()">
           Developer Page
         </button>
-        <script>
-          function devPage() {
-            document.getElementById('menu-click-open').play();
-            setTimeout(function () { window.location.href = "dev/dev-page.html"; }, 750);
-          }
-        </script>
-        <button class="main-button" onclick="socketIoTest();">
+                <script>
+                    function devPage() {
+                        document.getElementById('menu-click-open').play();
+                        setTimeout(function() {
+                            window.location.href = "dev/dev-page.html";
+                        }, 750);
+                    }
+                </script>
+                <button class="main-button" onclick="socketIoTest();">
           Socket.io test
         </button>
-        <script>
-          function socketIoTest() {
-            document.getElementById('menu-click-open').play()
-            setTimeout(function () { window.location.href = "socketiotest"; }, 750);
-          }
-        </script>
-        <div class="social-media" style="position: absolute; bottom: 0; width: 100%;">
-          <div class="social-logo">
-            <img src="https://cdn0.iconfinder.com/data/icons/free-social-media-set/24/discord-512.png"
-              class="social-image" onclick="window.location.href='https:/' + '/discord.gg/4Z9MM6c'" width="10%" style="display: block; margin: auto; cursor: pointer;"/>
-            <br />
-            <p style="text-align: center; color: white; font-family: 'Fredericka the Great', cursive;">
-              Initial idea and development by <a href="https://reddit.com/u/RexDoisPontoZero">u/RexDoisPontoZero</a>. Further development by <a href="https://reddit.com/u/Phyrik2222">u/Phyrik2222</a> and <a href="https://reddit.com/u/Parareda8">u/Parareda8</a>.
-            </p>
-          </div>
+                <script>
+                    function socketIoTest() {
+                        document.getElementById('menu-click-open').play()
+                        setTimeout(function() {
+                            window.location.href = "socketiotest";
+                        }, 750);
+                    }
+                </script>
+                <div class="social-media" style="position: absolute; bottom: 0; width: 100%;">
+                    <div class="social-logo">
+                        <img src="https://cdn0.iconfinder.com/data/icons/free-social-media-set/24/discord-512.png" class="social-image" onclick="window.location.href='https:/' + '/discord.gg/4Z9MM6c'" width="10%" style="display: block; margin: auto; cursor: pointer;" />
+                        <br />
+                        <p style="text-align: center; color: white; font-family: 'Fredericka the Great', cursive;">
+                            Initial idea and development by <a href="https://reddit.com/u/RexDoisPontoZero">u/RexDoisPontoZero</a>. Further development by <a href="https://reddit.com/u/Phyrik2222">u/Phyrik2222</a> and <a href="https://reddit.com/u/Parareda8">u/Parareda8</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  <audio control loop autoplay src="music/main_theme.mp3" id="menu-music"></audio>
-  <audio control autoplay src="sounds/click_menu.wav" id="menu-click-open"></audio>
+    <audio control loop autoplay src="music/main_theme.mp3" id="menu-music"></audio>
+    <audio control autoplay src="sounds/click_menu.wav" id="menu-click-open"></audio>
 </body>
 
 </html>
