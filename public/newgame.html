@@ -1,11 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Roboto:wght@300;500&display=swap"
+        rel="stylesheet" />
     <title>New game - Hearts of HTML</title>
 </head>
+
 <body>
-    <h1>New game</h1>
+    <div>
+        <h1 style="text-align: center; color: black; font-size: 60px;">New game</h1>
+        <br>
+        <img id="world-map" width="100%" style="position: absolute; left: 0; bottom: 0;">
+
+        <form name="new-game-info-form" id="new-game-info-form" action="/createnewgame.html" style="position: absolute; bottom: 10px; width: 10%; margin-left: 45%; padding-top: 10px; padding-bottom: 10px; background-color: black; text-align: center;">
+            <label for="name_input">Name of game:</label>
+            <input type="text" name="name_input" id="name_input">
+            <br>
+            <label for="country_input">Country:</label>
+            <input type="text" name="country_input" id="country_input" readonly=true>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function componentToHex(c) {
+            var hex = c.toString(16);
+            return hex.length == 1 ? "0" + hex : hex;
+        }
+
+        function rgbToHex(r, g, b) {
+            return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+        }
+
+        var img = document.getElementById("world-map")
+        var canvas = document.createElement("canvas")
+        img.onload = () => {
+            console.log("sb1")
+            canvas.width = img.width
+            canvas.height = img.height
+            canvas.getContext("2d").drawImage(img, 0, 0, img.width, img.height)
+        }
+        img.src = "images/ColouredMap-World-1938.png"
+
+        function chooseCountry(hexString) {
+            countryP = document.getElementById("country_input")
+
+            hexString = hexString.toUpperCase()
+
+            switch (hexString) {
+                case "#B73254":
+                    countryP.value = "United Kingdom"
+                    break;
+                case "#3971E4":
+                    countryP.value = "France"
+                    break;
+                case "#4E4942":
+                    countryP.value = "Germany"
+                    break;
+                case "#437F3F":
+                    countryP.value = "Italy"
+                    break;
+                case "#6F0C15":
+                    countryP.value = "Soviet Union"
+                    break;
+                case "#DEAF9C":
+                    countryP.value = "Japan"
+                    break;
+                case "#106CC1":
+                    countryP.value = "USA"
+                    break;
+                case "#DBE75C":
+                    countryP.value = "China"
+                    break;
+                case "#4C913F":
+                    countryP.value = "Brazil"
+                    break;
+                case "#A04B56":
+                    countryP.value = "Poland"
+                    break;
+                case "#773027":
+                    countryP.value = "Canada"
+                    break;
+
+                default:
+                    countryP.value = ""
+                    break;
+            }
+        }
+
+        document.getElementById("world-map").addEventListener("click", (event) => {
+            bounds = document.getElementById("world-map").getBoundingClientRect()
+            var left = bounds.left;
+            var top = bounds.top;
+            var x = event.pageX - left;
+            var y = event.pageY - top;
+            var cw = document.getElementById("world-map").clientWidth
+            var ch = document.getElementById("world-map").clientHeight
+            var iw = document.getElementById("world-map").naturalWidth
+            var ih = document.getElementById("world-map").naturalHeight
+            var px = Math.round(x / cw * iw)
+            var py = Math.round(y / ch * ih)
+
+            var pixelData = canvas.getContext("2d").getImageData(event.offsetX, event.offsetY, 1, 1).data
+
+            //alert(px + ":" + py + " data: " + pixelData)
+
+            var colourHexString = rgbToHex(pixelData[0], pixelData[1], pixelData[2])
+
+            chooseCountry(colourHexString)
+        })
+    </script>
 </body>
+
 </html>
