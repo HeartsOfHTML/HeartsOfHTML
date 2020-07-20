@@ -104,12 +104,42 @@ function scrollWheelMoved(action) {
 }
 
 function drawUiStage() {
-    var button1 = new createjs.Shape()
+    var flagPlaceholder = new createjs.Shape()
+    var flagHeight = document.getElementById("ui-canvas").height
+    flagPlaceholder.graphics.beginFill("#000000").drawRect(0, 0, flagHeight * 2, flagHeight)
 
-    var button1Height = document.getElementById("ui-canvas").height
-    button1.graphics.beginFill("#000000").drawRect(0, 0, button1Height * 2, button1Height)
+    uiStage.addChild(flagPlaceholder)
 
-    uiStage.addChild(button1)
+    var saveButton = new createjs.Shape()
+    var saveButtonSize = { w: 100, h: 25 }
+    var saveButtonPosition = { x: window.innerWidth - saveButtonSize.w - 10, y: 10 }
+    saveButton.graphics.beginFill("#757575").drawRect(saveButtonPosition.x, saveButtonPosition.y, saveButtonSize.w, saveButtonSize.h)
+    var saveButtonText = new createjs.Text("Save game", "15px Arial", "#ffffff")
+    saveButtonText.x = saveButtonPosition.x + 10
+    saveButtonText.y = saveButtonPosition.y + 5
+
+    saveButton.addEventListener("click", (event) => {
+        saveGame()
+    })
+
+    uiStage.addChild(saveButton)
+    uiStage.addChild(saveButtonText)
 
     uiStage.update()
+}
+
+function saveGame() {
+    console.log("Saving...")
+
+    var jsonToSave = {
+        game_name: gameName,
+        country: country
+    }
+    var filename = `${gameName} - ${country}.json`
+
+    var a = document.createElement("a")
+    var file = new Blob([JSON.stringify(jsonToSave)], { type: "text/plain" })
+    a.href = URL.createObjectURL(file)
+    a.download = filename
+    a.click()
 }

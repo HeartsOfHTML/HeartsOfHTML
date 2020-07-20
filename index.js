@@ -30,7 +30,7 @@ app.post("/socketiotest", (req, res) => {
             // handle createRoom request
             var socket = io.sockets.connected[req.body.socketId]
             var roomName = req.body.roomName
-            
+
             socket.join(roomName)
 
             console.log("Room created successfully")
@@ -49,6 +49,10 @@ app.post("/socketiotest", (req, res) => {
 
 app.get("/newgame", (req, res) => {
     res.sendFile(__dirname + "/public/newgame.html")
+})
+
+app.get("/loadgame", (req, res) => {
+    res.sendFile(__dirname + "/public/loadgame.html")
 })
 
 app.get("/maingame", (req, res) => {
