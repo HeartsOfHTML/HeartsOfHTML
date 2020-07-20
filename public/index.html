@@ -20,6 +20,7 @@
             </div>
             <div id="menu-contents">
                 <h1 class="h1">Hearts of HTML</h1>
+                <button class="main-button" onClick="continueGame()">Continue Game</button>
                 <button class="main-button" onclick="newGame()">
           New Game
         </button>
@@ -27,6 +28,10 @@
           Load Game
         </button>
                 <script>
+                    function continueGame() {
+                        window.location.href = "/maingame"
+                    }
+
                     function newGame() {
                         document.getElementById('menu-click-open').play();
                         setTimeout(function() {
