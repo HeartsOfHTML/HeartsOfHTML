@@ -112,7 +112,10 @@ function drawUiStage() {
 
     var saveButton = new createjs.Shape()
     var saveButtonSize = { w: 100, h: 25 }
-    var saveButtonPosition = { x: window.innerWidth - saveButtonSize.w - 10, y: 10 }
+    var saveButtonPosition = {
+        x: window.innerWidth - saveButtonSize.w - 10,
+        y: 10 * 4
+    }
     saveButton.graphics.beginFill("#757575").drawRect(saveButtonPosition.x, saveButtonPosition.y, saveButtonSize.w, saveButtonSize.h)
     var saveButtonText = new createjs.Text("Save game", "15px Arial", "#ffffff")
     saveButtonText.x = saveButtonPosition.x + 10
@@ -124,6 +127,21 @@ function drawUiStage() {
 
     uiStage.addChild(saveButton)
     uiStage.addChild(saveButtonText)
+
+    var homeButton = new createjs.Shape()
+    var homeButtonSize = { w: 100, h: 25 }
+    var homeButtonPosition = { x: window.innerWidth - homeButtonSize.w - 10, y: 10 }
+    homeButton.graphics.beginFill("#757575").drawRect(homeButtonPosition.x, homeButtonPosition.y, homeButtonSize.w, homeButtonSize.h)
+    var homeButtonText = new createjs.Text("Home", "15px Arial", "#ffffff")
+    homeButtonText.x = homeButtonPosition.x + 10
+    homeButtonText.y = homeButtonPosition.y + 5
+
+    homeButton.addEventListener("click", (event) => {
+        goToHome()
+    })
+
+    uiStage.addChild(homeButton)
+    uiStage.addChild(homeButtonText)
 
     uiStage.update()
 }
@@ -142,4 +160,8 @@ function saveGame() {
     a.href = URL.createObjectURL(file)
     a.download = filename
     a.click()
+}
+
+function goToHome() {
+    window.location.href = "/"
 }
