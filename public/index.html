@@ -23,14 +23,21 @@
                 <button class="main-button" onclick="newGame()">
           New Game
         </button>
-                <button class="main-button" onclick="newGame()">
-          Load Game (redirects to new game)
+                <button class="main-button" onclick="loadGame()">
+          Load Game
         </button>
                 <script>
                     function newGame() {
                         document.getElementById('menu-click-open').play();
                         setTimeout(function() {
                             window.location.href = "newgame";
+                        }, 750);
+                    }
+
+                    function loadGame() {
+                        document.getElementById('menu-click-open').play();
+                        setTimeout(function() {
+                            window.location.href = "loadgame";
                         }, 750);
                     }
                 </script>

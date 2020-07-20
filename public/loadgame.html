@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Roboto:wght@300;500&display=swap" rel="stylesheet" />
+    <link href="main.css" rel="stylesheet">
+    <script src="js/main-menu.js">
+    </script>
+    <title>Load game - Hearts of HTML</title>
+</head>
+
+<body>
+    <div id="menu-background">
+        <div id="main-menu">
+            <div id="menu-contents" style="display: inline-block;">
+                <br>
+                <h1 class="h1">Load Game</h1>
+                <form style="width: 100%;">
+                    <label for="json_upload_input" class="main-button">Upload JSON file</label>
+                    <input type="file" accept=".json" name="json_upload_input" id="json_upload_input" style="position: fixed; top: -100em;">
+                    <button onclick="onChange()" class="main-button">Submit</button>
+                </form>
+            </div>
+            <div class="social-media " style="position: absolute; bottom: 0; width: 100%; ">
+                <div class="social-logo ">
+                    <img src="https://cdn0.iconfinder.com/data/icons/free-social-media-set/24/discord-512.png " class="social-image " onclick="window.location.href='https:/' + '/discord.gg/4Z9MM6c' " width="10% " style="display: block; margin: auto;
+                        cursor: pointer; " />
+                    <br />
+                    <p style="text-align: center; color: white; font-family: 'Fredericka the Great', cursive; ">
+                        Initial idea and development by <a href="https://reddit.com/u/RexDoisPontoZero ">u/RexDoisPontoZero</a>. Further development by <a href="https://reddit.com/u/Phyrik2222 ">u/Phyrik2222</a> and <a href="https://reddit.com/u/Parareda8 ">u/Parareda8</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function onChange() {
+            var reader = new FileReader();
+            reader.onload = onReaderLoad;
+            reader.readAsText(document.getElementById("json_upload_input").files[0]);
+        }
+
+        function onReaderLoad(event) {
+            console.log(event.target.result);
+            var obj = JSON.parse(event.target.result);
+
+            finalRedirect(obj)
+        }
+
+        function finalRedirect(jsonObject) {
+            var finalRedirectPath = `/createnewgame.html?name_input=${jsonObject.game_name}&country_input=${jsonObject.country}`
+            window.location.href = finalRedirectPath
+        }
+    </script>
+</body>
+
+</html>
